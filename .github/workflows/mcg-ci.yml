@@ -28,3 +28,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: false
+      - name: Run library tests 
+        uses: addnab/docker-run-action@v3
+        with: 
+          image: metacg-devel:latest
+          run: /opt/metacg/metacg/build/pgis/test/unit/pgistests
