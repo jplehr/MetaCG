@@ -28,3 +28,4 @@ jobs:
         name: Spellcheck 
         with:
           source_files: '**/*.md'
+          task_name: Markdown
