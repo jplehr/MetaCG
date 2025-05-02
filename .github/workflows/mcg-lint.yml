@@ -18,3 +18,14 @@ jobs:
         run: |
           for f in $(find {cgcollector,graph,pgis} -name "CMakeLists.txt"); do cmake-format --check $f || exit 1; done ; cmake-format --check CMakeLists.txt
           for f in $(find ./cmake -type f); do cmake-format --check $f || exit 1; done
+
+jobs:
+  spellcheck:
+    name: Spellcheck READMEs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: rojopolis/spellcheck-github-actions@0.48.0
+        name: Spellcheck 
+        with:
+          source_files: '**/*.md'
