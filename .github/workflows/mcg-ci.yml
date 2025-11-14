@@ -79,8 +79,8 @@ jobs:
           load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          push: true
-  
+          push: false
+
   build-graphtools:
     runs-on: ubuntu-latest
     needs: build-baseimage
@@ -92,7 +92,7 @@ jobs:
         with:
           context: .
           file: "container/graph-tools"
-          tags: metacg-devel:latest 
+          tags: metacg-gt-devel:latest 
           load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -108,7 +108,7 @@ jobs:
         with:
           context: .
           file: "container/full-build"
-          tags: metacg-devel:latest 
+          tags: metacg-base:latest 
           load: true
           cache-from: type=gha
           cache-to: type=gha,mode=max
