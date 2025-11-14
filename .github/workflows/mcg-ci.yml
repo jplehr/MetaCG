@@ -100,6 +100,7 @@ jobs:
   
   build-container:
     runs-on: ubuntu-latest
+    needs: build-baseimage
     steps:
       - name: checkout code
         uses: actions/checkout@v4
