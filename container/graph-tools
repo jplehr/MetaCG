@@ -1,4 +1,4 @@
-FROM mcg-base-image
+FROM metacg-base
 
 WORKDIR /opt/metacg
 
