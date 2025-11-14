@@ -70,6 +70,7 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+      
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
@@ -80,6 +81,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           push: false
+          outputs: type=docker,dest=/tmp/metacg-base.tar
+      
+      - name: Upload base image artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: metacg-base
+          path: /tmp/metacg-base.tar
 
   build-graphtools:
     runs-on: ubuntu-latest
@@ -87,6 +95,16 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v4
+
+      - name: Fetch base artifact
+        uses: actions/download-artifact@v3
+        with: 
+          name: metacg-base
+          path: /tmp
+      
+      - name: Load base artifact
+        run: docker load -i /tmp/metacg-base.tar
+      
       - uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
