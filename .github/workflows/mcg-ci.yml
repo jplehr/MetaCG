@@ -102,8 +102,6 @@ jobs:
           name: metacg-base
           path: /tmp
       
-      #- uses: docker/setup-buildx-action@v3
-      
       - name: Load base artifact
         run: docker load -i /tmp/metacg-base.tar
       
@@ -112,9 +110,6 @@ jobs:
           context: .
           file: "container/graph-tools"
           tags: metacg-gt-devel:latest 
-          #load: true
-          #cache-from: type=gha
-          #cache-to: type=gha,mode=max
           push: false
   
   build-container:
@@ -133,15 +128,15 @@ jobs:
       - name: Load base artifact
         run: docker load -i /tmp/metacg-base.tar
       
-      - uses: docker/setup-buildx-action@v3
+      #- uses: docker/setup-buildx-action@v3
       - uses: docker/build-push-action@v6
         with:
           context: .
           file: "container/full-build"
           tags: metacg-base:latest 
-          load: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          #load: true
+          #cache-from: type=gha
+          #cache-to: type=gha,mode=max
           push: false
       - name: Check for canonical test graph format
         uses: addnab/docker-run-action@v3
