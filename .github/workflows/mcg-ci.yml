@@ -134,9 +134,9 @@ jobs:
           context: .
           file: "container/full-build"
           tags: metacg-base:latest 
-          #load: true
-          #cache-from: type=gha
-          #cache-to: type=gha,mode=max
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           push: false
       - name: Check for canonical test graph format
         uses: addnab/docker-run-action@v3
