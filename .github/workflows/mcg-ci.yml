@@ -112,9 +112,9 @@ jobs:
           context: .
           file: "container/graph-tools"
           tags: metacg-gt-devel:latest 
-          load: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          #load: true
+          #cache-from: type=gha
+          #cache-to: type=gha,mode=max
           push: false
   
   build-container:
