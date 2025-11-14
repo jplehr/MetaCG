@@ -102,7 +102,7 @@ jobs:
           name: metacg-base
           path: /tmp
       
-      - uses: docker/setup-buildx-action@v3
+      #- uses: docker/setup-buildx-action@v3
       
       - name: Load base artifact
         run: docker load -i /tmp/metacg-base.tar
